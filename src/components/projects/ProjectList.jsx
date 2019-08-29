@@ -1,8 +1,13 @@
 import React from 'react'
 import ProjectSummary from './ProjectSummary';
 
+import { Link, Redirect } from 'react-router-dom'
+
 
 const ProjectList = ({projects}) => {
+
+    // const auth = this.props
+    // if(!auth.uid) return <Redirect to='/signin'/>
     return (
         <div className="project-list section">
 
@@ -14,10 +19,12 @@ const ProjectList = ({projects}) => {
 
             <ProjectSummary/> */}
 
-            {projects && projects.map( project => {
+            { projects && projects.map( project => {
                 
                 return (
-                    <ProjectSummary project={project} key={project.id} />
+                    <Link to={'/project/' + project.id} key={project.id} >
+                        <ProjectSummary project = { project }/>
+                    </Link>
                 )
             })}
        
